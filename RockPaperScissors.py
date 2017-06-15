@@ -1,149 +1,166 @@
 #! /usr/bin/python
 import random
 import getpass
+import curses
 
-#pythonType = "Python 2"
-pythonType = "Python 3"
+# Setup Params
+mainBorder = 0
+strList = ["rock", "Rock", "paper", "Paper", "scissors", "Scissors", "lizard", "Lizard", "spock", "Spock"]
+pythonType = "Python 2"
+#pythonType = "Python 3"
 
-#print(chr(27) + "[2J")
-print ("\n\n\nWelcome to Rock, Paper, Scissors, Lizard, Spock\n\n")
-
-# Decision function
+#******** Decision functions ******************************************************************************************
 # Scissors
 def ScissorsCutsspaper(winner, loser):
-	print ("\nScissors cuts paper")
-	return
-def ScissorsDecapitateslizard(winner, loser):
-	print ("\nScissors decapitates lizard")
-	return
-def ScissorsDraw():
-	print ("\nIts a draw. Looks like you are not ... cut out ... to play this game")
-	return
+	return ("Scissors cuts paper")
 
+def ScissorsDecapitateslizard(winner, loser):
+	return ("Scissors decapitates lizard")
+	
+def ScissorsDraw():
+	return ("Its a draw. Looks like you are not ... cut out ... to play this game")
+	
 # Paper
 def PaperCoversRock(winner, loser):
-	print ("\nPaper covers rock")
-	return
+	return ("Paper covers rock")
+	
 def PaperDisprovesSpock(winner, loser):
-	print ("\nPaper disproves Spock")
-	return
+	return ("Paper disproves Spock")
+	
 def PaperDraw():
-	print ("\nIts a draw. Both of you seems to be reading from the same page.")
-	return
-
+	return ("Its a draw. Both of you seems to be reading from the same page.")
+	
 # Rock
 def RockCrushesLizard(winner, loser):
-	print ("\nRock crushes lizard")
-	return
+	return ("Rock crushes lizard")
+	
 def RockCrushesScissors(winner, loser):
-	print ("\nRock crushes scissors")
-	return
+	return ("Rock crushes scissors")
+	
 def RockDraw():
-	print ("\nIts a draw. Don't worry, you can just tell everyone you're both winners")
-	return
+	return ("Its a draw. Don't worry, you can just tell everyone you're both winners")
 
 # Lizard
 def LizardPoisonsSpock(winner, loser):
-	print ("\nLizard posions Spock")
-	return
+	return ("Lizard posions Spock")
+	
 def LizardEatsPaper(winner, loser):
-	print ("\nLizard eats paper")
-	return
+	return ("Lizard eats paper")
+	
 def LizardDarw():
-	print ("\nAnd the winner is.... oh, its a draw. How disappointing")
-	return
-
+	return ("And the winner is.... oh, its a draw. How disappointing")
+	
 # Spock
 def SpockVaporisesRock(winner, loser):
-	print ("\nSpock vaporises rock")
-	return
+	return ("Spock vaporises rock")
+	
 def SpockSmashesScissors(winner, loser):
-	print ("\nSpock smashes scissors")
-	return
+	return ("Spock smashes scissors")
+	
 def SpockDraw():
-	print ("\nIts a draw. Guys please, we can't all be Spock")
-	return
+	return ("Its a draw. Guys please, we can't all be Spock")
+	
 
 #******** Compare answers function ************************************************************************************
 def compare(player1, player2):
-	print ("Player one chose " + player1 + "\n" + "Player two chose "  + player2)
 	
-	if player1 == "scissors":
-		if player2 == "scissors":
-			ScissorsDraw()
-		if player2 == "paper":
-			ScissorsCutsspaper(player1, player2)
-		if player2 == "rock":
-			RockCrushesScissors(player2, player1)
-		if player2 == "lizard":
-			ScissorsDecapitateslizard(player1, player2)
-		if player2 == "spock":
-			SpockSmashesScissors(player2, player1)
-	elif player1 == "paper":
-		if player2 == "scissors":
-			ScissorsCutsspaper(player2, player1)
-		if player2 == "paper":
-			PaperDraw()
-		if player2 == "rock":
-			PaperCoversRock(player1, player2)
-		if player2 == "lizard":
-			LizardEatsPaper(player1, player2)
-		if player2 == "spock":
-			SpockSmashesScissors(player2, player1)
-	elif player1 == "rock":
-		if player2 == "scissors":
-			RockCrushesScissors(player1, player2)
-		if player2 == "paper":
-			PaperCoversRock(player2, player1)
-		if player2 == "rock":
-			RockDraw()
-		if player2 == "lizard":
-			RockCrushesLizard(player1, player2)
-		if player2 == "spock":
-			SpockVaporisesRock(player2, player1)
-	elif player1 == "lizard":
-		if player2 == "scissors":
-			ScissorsDecapitateslizard(player2, player1)
-		if player2 == "paper":
-			LizardEatsPaper(player1, player2)
-		if player2 == "rock":
-			RockCrushesLizard(player2, player1)
-		if player2 == "lizard":
-			LizardDarw()
-		if player2 == "spock":
-			LizardPoisonsSpock(player1, player2)
-	elif player1 == "spock":
-		if player2 == "scissors":
-			SpockSmashesScissors(player1, player2)
-		if player2 == "paper":
-			PaperDisprovesSpock(player2, player1)
-		if player2 == "rock":
-			SpockVaporisesRock(player1, player2)
-		if player2 == "lizard":
-			LizardPoisonsSpock(player2, player1)
-		if player2 == "spock":
-			SpockDraw()
-			
+	if ("cissors" in player1):
+		if ("cissors" in player2):
+			endMsg = ScissorsDraw()
+		if ("aper" in player2):
+			endMsg = ScissorsCutsspaper(player1, player2)
+		if ("rock" in player2) or ("Rock" in player2):
+			endMsg = RockCrushesScissors(player2, player1)
+		if ("izard" in player2):
+			endMsg = ScissorsDecapitateslizard(player1, player2)
+		if ("pock" in player2):
+			endMsg = SpockSmashesScissors(player2, player1)
+	elif ("aper" in player1):
+		if ("cissors" in player2):
+			endMsg = ScissorsCutsspaper(player2, player1)
+		if ("aper" in player2):
+			endMsg = PaperDraw()
+		if ("rock" in player2) or ("Rock" in player2):
+			endMsg = PaperCoversRock(player1, player2)
+		if ("izard" in player2):
+			endMsg = LizardEatsPaper(player1, player2)
+		if ("pock" in player2):
+			endMsg = SpockSmashesScissors(player2, player1)
+	elif ("rock" in player1) or ("Rock" in player1):
+		if ("cissors" in player2):
+			endMsg = RockCrushesScissors(player1, player2)
+		if ("aper" in player2):
+			endMsg = PaperCoversRock(player2, player1)
+		if ("rock" in player2) or ("Rock" in player2):
+			endMsg = RockDraw()
+		if ("izard" in player2):
+			endMsg = RockCrushesLizard(player1, player2)
+		if ("pock" in player2):
+			endMsg = SpockVaporisesRock(player2, player1)
+	elif ("izard" in player1):
+		if ("cissors" in player2):
+			endMsg = ScissorsDecapitateslizard(player2, player1)
+		if ("aper" in player2):
+			endMsg = LizardEatsPaper(player1, player2)
+		if ("rock" in player2) or ("Rock" in player2):
+			endMsg = RockCrushesLizard(player2, player1)
+		if ("izard" in player2):
+			endMsg = LizardDarw()
+		if ("pock" in player2):
+			endMsg = LizardPoisonsSpock(player1, player2)
+	elif ("pock" in player1):
+		if ("cissors" in player2):
+			endMsg = SpockSmashesScissors(player1, player2)
+		if ("aper" in player2):
+			endMsg = PaperDisprovesSpock(player2, player1)
+		if ("rock" in player2) or ("Rock" in player2):
+			endMsg = SpockVaporisesRock(player1, player2)
+		if ("izard" in player2):
+			endMsg = LizardPoisonsSpock(player2, player1)
+		if ("pock" in player2):
+			endMsg = SpockDraw()
+	
+	finalString = "Player one chose " + str(player1) + " Player two chose "  + str(player2)
+	screen.clear()
+	screen.border(mainBorder)
+	screen.addstr(2, 2, finalString)
+	screen.addstr(4, 2, endMsg)
+	screen.refresh()
+
+#******** Get User Input **********************************************************************************************
+def Get_User_Input():
+	userInput = screen.getstr(10, 10, 60)
+	if any([s in userInput for s in strList]):
+		return userInput
+	else:
+		Get_User_Input()
+	
 #******** Main Menu ***************************************************************************************************
 def menu():
-	print ("\n                 *************   Main Menu   *************")
-	print ("\n" * 5)
-	print ("1) Start Game\n")
-	print ("2) Rules\n")
-	print ("3) Credits\n")
-	print ("\n" * 9)
-	# Menu user choice
-	if(pythonType == "Python 2"):	# Python 2
-			menuInput = raw_input ("Please make a selection: ")
-	elif(pythonType == "Python 3"):	# Python 3
-			menuInput = input("Please make a selection: ")
-			
-	if(menuInput == "1"):		# Play game
+	menuChoice = 0	
+	
+	# Draw the main menu
+	screen.clear()
+	screen.border(mainBorder)
+	screen.addstr(2, 20, "ROCK PAPER SCISSOR LIZARD SPOCK", curses.A_UNDERLINE)
+	screen.addstr(3, 2, "Please enter a number...")
+	screen.addstr(5, 4, "1 - Start Game")
+	screen.addstr(6, 4, "2 - Rules")
+	screen.addstr(7, 4, "3 - Credits")
+	screen.addstr(8, 4, "4 - Exit")
+	screen.refresh()
+
+	menuChoice = screen.getch()	# User menu selection
+
+	if menuChoice == ord('1'):	# Starts game
 		gameLoop()
-	elif(menuInput == "2"):	# Rules
+	if menuChoice == ord('2'):	# Goes to "Rules" page
 		rules()
-	elif(menuInput == "3"):	# Credits
-		credits()
+	if menuChoice == ord('3'):	# Goes to "Credits" page
+		credits()      
+	if menuChoice == ord('4'):	# Quits out of program ( immeadiatly at the moment, will put a y/n in at some point)
+		quitOut()
+		return		# Exits to end of program
 		
 #******** Main Game loop **********************************************************************************************
 def gameLoop():
@@ -151,70 +168,75 @@ def gameLoop():
 	while playAgain == "yes":
 
 	# PLayer1's turn
-		print ("Player 1, you go first.")
-		print ("\n" * 15)
-		player1 = input ("What will it be? rock, paper, sicssors, lizard, spock?" + "\n"* 23 + ": ")
-		#player1 = getpass.getpass("What will it be? rock, paper, scissors, lizard, spock? \n\n")
-		
-		#while (player1 == "rock" and player1 == "paper" and player1 == "scissors" and player1 == "lizard" and player1 == "spock")
-		
-		#print(chr(27) + "[2J")	# Clear the screen
-	
-		print ("\n\nThankyou player1, nows its player2's turn\n")
-		
-		player2 = input ("What will it be? rock, paper, sicssors, lizard, spock? \n\n" + "\n" * 19 + ": ")
-		#player2 = getpass.getpass("What will it be? rock, paper, scissors, lizard, spock?\n\n")
+		screen.clear()
+		screen.border(mainBorder)
+		screen.addstr(2, 2, "Player 1, you go first.")
+		screen.addstr(3, 2, "What will it be? rock, paper, sicssors, lizard or spock?")
+		screen.refresh()
+		player1 = str(Get_User_Input())
 
-		#print(chr(27) + "[2J")	# Clear the screen
-		print ("\n" * 15)
-		#raw_input("Thankyou player2, now lets see who is the winner. Press enter to find out")
-		input("Thankyou player2, now lets see who is the winner. \n\nPress enter to find out" + "\n" * 21 + " ")
+	# Player2's turn
+		screen.clear()
+		screen.border(mainBorder)
+		screen.addstr(2, 2, "Thankyou player1, nows its player2's turn")
+		screen.addstr(3, 2, "What will it be? rock, paper, sicssors, lizard or spock?")
+		screen.refresh()
+		player2 = str(Get_User_Input())
 		
-		#print(chr(27) + "[2J")	# Clear the screen
-		print ("\n\n\n")
+	# Compare Result
+		screen.clear()
+		screen.border(mainBorder)
+		screen.addstr(2, 2, "Thankyou player2, now lets see who is the winner. Press enter to find out")
+		screen.refresh()
+		screen.getstr(10, 10, 60)
+		
 		compare(player1, player2)
-		print ("\n" * 15)
-		
+
 		# Give user choice to play again
-		if(pythonType == "Python 2"):	# Python 2
-			playAgain = raw_input ("\n\n\nWould you like to play again? ")
-		elif(pythonType == "Python 3"):	# Python 3
-			playAgain = input("\n\n\nWould you like to play again?")
+		screen.addstr(10, 2, "Would you like to play again?")
+		playAgain = screen.getstr(11, 10, 60)
+
+		if ('Y' in str(playAgain)) or ('y' in str(playAgain)):
+			gameLoop()
+		else:
+			quitOut()
 
 #******** Rules Function **********************************************************************************************
 def rules():
-	print("\n                 *************   The Rules   *************")
-	print("""\n\n	- Scissors cuts Paper,
-	- Paper covers rock,
-	- Rock crushes lizard,
-	- Lizard posions spock
-	- Spock smashes scissors,
-	- Scissors decapitates lizard,
-	- Lizard eats paper,
-	- Paper disproves spock,
-	- Spock vaporises rock,
-	- (and as it always has) Rock crushes scissors.\n""")
-	print("\n"*8)
 	
-	if(pythonType == "Python 2"):	# Python 2
-			rulesInput = raw_input ("Return to main menu (y/n): ")
-	elif(pythonType == "Python 3"):	# Python 3
-			rulesInput = input("Return to main menu (y/n): ")
-	if(rulesInput == "y"):
-		menu()
+	screen.clear()
+	screen.border(mainBorder)
+	screen.addstr(2, 5, "*************   The Rules   *************")
+	screen.addstr(3, 2, "	- Scissors cuts Paper,")
+	screen.addstr(4, 2, "	- Paper covers rock,")
+	screen.addstr(5, 2, "	- Rock crushes lizard,")
+	screen.addstr(6, 2, "	- Lizard posions spock,")
+	screen.addstr(7, 2, "	- Spock smashes scissors,")
+	screen.addstr(8, 2, "	- Scissors decapitates lizard,")
+	screen.addstr(9, 2, "	- Lizard eats paper,")
+	screen.addstr(10, 2, "	- Paper disproves spock,")
+	screen.addstr(11, 2, "	- Spock vaporises rock,")
+	screen.addstr(12, 2, "	- (and as it always has) Rock crushes scissors.")
+	screen.getstr(14, 10, 60)
+	menu()
+
 #******** Credits function ********************************************************************************************
 def credits():
-	print("\n                 *************   Credits   *************")
-	print ("\n" * 21)
-	if(pythonType == "Python 2"):	# Python 2
-			creditsInput = raw_input ("Return to main menu (y/n): ")
-	elif(pythonType == "Python 3"):	# Python 3
-			creditsInput = input("Return to main menu (y/n): ")
-	if(creditsInput == "y"):
-		menu()
+	screen.clear()
+	screen.border(mainBorder)
+	screen.addstr(2, 5, "*************   Credits   *************")
+	screen.getstr(14, 10, 60)
+	menu()
 
+#******** Quit function ***********************************************************************************************
+def quitOut():
+	curses.endwin()
+	quit()	
 
 # Program starts here
-
+screen = curses.initscr()	# Initiate curses window
+curses.curs_set(0)		# Turn curser to invisible
 menu()
+
+curses.endwin() # Make sure window is ended so you can continue to use the terminal
 
