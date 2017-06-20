@@ -1,6 +1,5 @@
 #! /usr/bin/python
-import random
-import getpass
+
 import curses
 
 # Setup Params
