@@ -16,54 +16,54 @@ def ScissorsCutsspaper(winner, loser):
 
 def ScissorsDecapitateslizard(winner, loser):
 	return ("Scissors decapitates lizard")
-	
+
 def ScissorsDraw():
 	return ("Its a draw. Looks like you are not ... cut out ... to play this game")
-	
+
 # Paper
 def PaperCoversRock(winner, loser):
 	return ("Paper covers rock")
-	
+
 def PaperDisprovesSpock(winner, loser):
 	return ("Paper disproves Spock")
-	
+
 def PaperDraw():
 	return ("Its a draw. Both of you seems to be reading from the same page.")
-	
+
 # Rock
 def RockCrushesLizard(winner, loser):
 	return ("Rock crushes lizard")
-	
+
 def RockCrushesScissors(winner, loser):
 	return ("Rock crushes scissors")
-	
+
 def RockDraw():
 	return ("Its a draw. Don't worry, you can just tell everyone you're both winners")
 
 # Lizard
 def LizardPoisonsSpock(winner, loser):
 	return ("Lizard posions Spock")
-	
+
 def LizardEatsPaper(winner, loser):
 	return ("Lizard eats paper")
-	
+
 def LizardDarw():
 	return ("And the winner is.... oh, its a draw. How disappointing")
-	
+
 # Spock
 def SpockVaporisesRock(winner, loser):
 	return ("Spock vaporises rock")
-	
+
 def SpockSmashesScissors(winner, loser):
 	return ("Spock smashes scissors")
-	
+
 def SpockDraw():
 	return ("Its a draw. Guys please, we can't all be Spock")
 	
 
 #******** Compare answers function ************************************************************************************
 def compare(player1, player2):
-	
+
 	if ("cissors" in player1):
 		if ("cissors" in player2):
 			endMsg = ScissorsDraw()
@@ -119,7 +119,7 @@ def compare(player1, player2):
 			endMsg = LizardPoisonsSpock(player2, player1)
 		if ("pock" in player2):
 			endMsg = SpockDraw()
-	
+
 	finalString = "Player one chose " + str(player1) + " Player two chose "  + str(player2)
 	screen.clear()
 	screen.border(mainBorder)
@@ -134,10 +134,10 @@ def Get_User_Input():
 		return userInput
 	else:
 		Get_User_Input()
-	
+
 #******** Main Menu ***************************************************************************************************
 def menu():
-	menuChoice = 0	
+	menuChoice = 0
 	
 	# Draw the main menu
 	screen.clear()
@@ -157,7 +157,7 @@ def menu():
 	if menuChoice == ord('2'):	# Goes to "Rules" page
 		rules()
 	if menuChoice == ord('3'):	# Goes to "Credits" page
-		credits()      
+		ShowCredits()
 	if menuChoice == ord('4'):	# Quits out of program ( immeadiatly at the moment, will put a y/n in at some point)
 		quitOut()
 		return		# Exits to end of program
@@ -221,7 +221,7 @@ def rules():
 	menu()
 
 #******** Credits function ********************************************************************************************
-def credits():
+def ShowCredits():
 	screen.clear()
 	screen.border(mainBorder)
 	screen.addstr(2, 5, "*************   Credits   *************")
@@ -231,7 +231,7 @@ def credits():
 #******** Quit function ***********************************************************************************************
 def quitOut():
 	curses.endwin()
-	quit()	
+	quit()
 
 # Program starts here
 screen = curses.initscr()	# Initiate curses window
